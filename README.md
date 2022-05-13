@@ -1,7 +1,4 @@
 # AI-Stolen
-![tung](https://user-images.githubusercontent.com/88236617/168316957-90660ffd-47b1-4738-8a6c-fde1b3915b60.png)
-
-
-Let's go back, Tùng Chùa
+![tung](https://user-images.githubusercontent.com/88236617/168318141-c3beb5fa-1767-4876-a4d3-32a04d75c5af.png)
 
 Cảm ơn nhá!
