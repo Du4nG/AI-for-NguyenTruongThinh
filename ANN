@@ -1,56 +1,29 @@
-from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout, Conv2D, MaxPooling2D, Flatten
-from tensorflow.keras.optimizers import Adam
-from sklearn.preprocessing import StandardScaler
-from keras.utils import np_utils
-from sklearn.utils import shuffle
-import cv2
-import matplotlib.pyplot as plt
-import numpy as np
-import pickle
-import tensorflow as tf
-import math as m
-
-# Load Data 
-with open('data.pickle', 'rb') as f:
+with open('dung.pickle', 'rb') as f:
     (x_train, y_train) = pickle.load(f)
 
-# Reshape Data
-x_pre = x_train[50]
+x_pre = x_train[101]
 x_train = x_train[:150]
 y_train = y_train[:150]
 x_train = x_train.reshape(x_train.shape[0], -1)
 
-# Preprocessing Data
 x_train = x_train.astype('float32')
 x_train /= 255
 
-# Encoding Y
 y_train = np_utils.to_categorical(y_train, 2)
-
-# Shuffe Data
 x_train, y_train = shuffle(x_train, y_train)
 
-model = Sequential()
-model.add(Dense(10, activation='relu', input_shape = (67500,)))
-model.add(Dense(10, activation='relu'))
-model.add(Dense(10, activation='relu'))
-model.add(Dense(10, activation='relu'))
-model.add(Dense(10, activation='relu'))
-model.add(Dense(10, activation='relu'))
-model.add(Dense(10, activation='relu'))
-model.add(Dense(10, activation='relu'))
-model.add(Dense(10, activation='relu'))
-model.add(Dense(10, activation='relu'))
-model.add(Dense(2, activation='sigmoid'))
-model.compile(loss='binary_crossentropy', optimizer =Adam(), metrics=['acc'])
+model1 = Sequential()
+model1.add(Dense(10, activation='relu', input_shape = (67500,)))
+model1.add(Dense(10, activation='relu'))
+model1.add(Dense(10, activation='relu'))
+model1.add(Dense(2, activation='sigmoid'))
+model1.compile(loss='binary_crossentropy', optimizer =Adam(), metrics=['acc'])
 
-# Load Test Image
 plt.imshow(cv2.cvtColor(x_pre, cv2.COLOR_BGR2RGB))
 print(x_pre.shape)
 img = x_pre.reshape(1,-1)
 img = img.astype('float32')
 img /= 255
 
-plt.title("Kết quả [Dũng đẹp trai(1) / Dũng hơi đẹp trai(0)] : " + str(np.argmax(model.predict(img))))
+plt.title("1: Yes, 0: No. Result: " + str(np.argmax(model1.predict(img))))
 plt.imshow(cv2.cvtColor(x_pre, cv2.COLOR_BGR2RGB), cmap=plt.get_cmap('gray'))
