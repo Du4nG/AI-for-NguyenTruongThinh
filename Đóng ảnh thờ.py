@@ -9,3 +9,5 @@ while success:
     success, img = vidcap.read()
     print('Read a new frame: ', success)
     count += 1
+    
+# Sau đó đưa đường dẫn qua file dưachuột.py để chạy mà xuất file nhé.
