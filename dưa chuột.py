@@ -1,3 +1,5 @@
+#Dán nhãn cho mấy thằng vô danh tiểu tốt nè
+
 import cv2
 import glob
 import numpy as np
